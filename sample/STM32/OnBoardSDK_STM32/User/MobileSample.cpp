@@ -54,13 +54,15 @@ parseFromMobileCallback_v2(DJI::OSDK::Vehicle*      vehicle,
 	if ((datalen >= ZK_FIXED_LEN) && (datalen <= ZK_MAX_LEN)) {
 		memcpy(data, s_data, datalen);
 		msgData->datalen_recvapp = datalen;
+		mobile_recv_time = TimingDelay;
+		GPIO_ResetBits(GPIOC, GPIO_Pin_12);
 	}
 }
 //send
 extern "C" void sendToMobile(uint8_t *data, uint8_t len);
 void sendToMobile(uint8_t *data, uint8_t len) {
 	v->moc->sendDataToMSDK(data, len);
-//	_FLIGHT_UART_TX_LED = 0;
-//	usart1_tx_flag = TimingDelay;
+	mobile_send_time = TimingDelay;
+	GPIO_ResetBits(GPIOG, GPIO_Pin_8);
 }
 

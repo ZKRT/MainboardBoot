@@ -26,19 +26,19 @@
 
 //dji 运行状态
 enum dji_run_state {
-  init_none_djirs = 0,      //没有连接
-  set_broadcastFreq_djirs,  //发送广播订阅
-  set_broadcastFreq_ok,     //订阅成功
-  set_avtivate_djirs,       //激活
-  avtivated_ok_djirs        //激活成功
+    init_none_djirs = 0,      //没有连接
+    set_broadcastFreq_djirs,  //发送广播订阅
+    set_broadcastFreq_ok,     //订阅成功
+    set_avtivate_djirs,       //激活
+    avtivated_ok_djirs        //激活成功
 };
 
 /* Exported typedef ------------------------------------------------------------*/
 
 //dji 运行状态结构体
 typedef struct {
-  dji_run_state run_status;
-  unsigned int cmdres_timeout;
+    dji_run_state run_status;
+    unsigned int cmdres_timeout;
 } dji_sdk_status;
 
 /* Exported functions ------------------------------------------------------- */

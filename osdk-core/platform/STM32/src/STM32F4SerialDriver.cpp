@@ -31,7 +31,7 @@
 #include <STM32F4SerialDriver.h>
 #include <time.h>
 
-extern uint32_t tick;
+extern uint32_t TimingDelay;
 
 void
 STM32F4::delay_nms(uint16_t time)
@@ -69,6 +69,6 @@ STM32F4::send(const uint8_t* buf, size_t len)
 DJI::OSDK::time_ms
 STM32F4::getTimeStamp()
 {
-  return tick;
+  return TimingDelay;
 }
 

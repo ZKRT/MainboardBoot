@@ -40,7 +40,7 @@ dji_sdk_status djisdk_state = {init_none_djirs, 0xffffffff};  //dji sdk 运行状态
   * @retval None
   */
 int dji_init(void) {
-	fcok_led(0);
+	init_led(0);
 	delay_nms(5000);
 	/*(1): dji requirement	*/
 	// Check USART communication
@@ -94,7 +94,7 @@ void dji_process(void) {
 	switch (djisdk_state.run_status) {
 	case init_none_djirs:
 		djisdk_state.run_status = set_avtivate_djirs;
-		djisdk_state.cmdres_timeout = tick;
+		djisdk_state.cmdres_timeout = TimingDelay;
 		userActivate(); 																	                        //(1)
 		// Verify subscription
 		if (v->getFwVersion() != Version::M100_31) {                              //(2)
@@ -110,7 +110,7 @@ void dji_process(void) {
 		delay_nms(50);
 		break;
 	case set_avtivate_djirs:
-		if (djisdk_state.cmdres_timeout - tick >= 5000) { //激活不成功时，每5秒重新激活一次
+		if (TimingDelay - djisdk_state.cmdres_timeout >= 5000) { //激活不成功时，每5秒重新激活一次
 			djisdk_state.run_status = init_none_djirs;
 		}
 		break;

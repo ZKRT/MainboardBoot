@@ -44,7 +44,8 @@
 #include "dji_vehicle.hpp"
 #include "stm32f4xx_conf.h"
 #include "timer.h"
-extern uint32_t tick; // tick is the time stamp,which record how many ms since u
+#include "sys.h"
+//extern uint32_t tick; // tick is the time stamp,which record how many ms since u
 // initialize the system.
 // warnning: after 49 days of non-reset running, tick will RESET to ZERO.
 

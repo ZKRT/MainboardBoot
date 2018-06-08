@@ -31,7 +31,7 @@
 #include "timer.h"
 #include "main.h"
 
-uint32_t tick = 0; // tick is the time stamp,which record how many ms since u
+//uint32_t tick = 0; // tick is the time stamp,which record how many ms since u
 // initialize the system.
 /*extern VirtualRC virtualrc;
 extern VirtualRCData myVRCdata;
@@ -99,10 +99,10 @@ extern Flight flight;
 //}
 void
 SystickConfig() {
-  if (SysTick_Config(SystemCoreClock / 1000)) { // 1000 ticks per second.
-    while (1)
-      ; // run here when error.
-  }
+	if (SysTick_Config(SystemCoreClock / 1000)) { // 1000 ticks per second.
+		while (1)
+			; // run here when error.
+	}
 }
 #ifdef __cplusplus
 extern "C" {
@@ -110,10 +110,10 @@ extern "C" {
 
 void
 SysTick_Handler(void) {
-  if (tick > 4233600000ll) { // 49 days non-reset would cost a tick reset.
-    tick = 0;
-  }
-  tick++;
+	if (TimingDelay > 4233600000ll) { // 49 days non-reset would cost a tick reset.
+		TimingDelay = 0;
+	}
+	TimingDelay++;
 }
 //void
 //TIM1_UP_TIM10_IRQHandler(void)

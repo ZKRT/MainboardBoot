@@ -56,9 +56,9 @@ typedef enum {
     TNS_FAIL,
     TNS_FAIL_UPDATE,
     TNS_FAIL_FWSIZE, //固件超过允许的大小
-	TNS_FAIL_SEQ, //序列号出错，可能丢包
-	TNS_FAIL_INVALID_FW,//无效的固件包,可能没有发送准备升级命令
-	TNS_FAIL_FWWRITE //写失败
+    TNS_FAIL_SEQ, //序列号出错，可能丢包
+    TNS_FAIL_INVALID_FW,//无效的固件包,可能没有发送准备升级命令
+    TNS_FAIL_FWWRITE //写失败
 } CommonRespondState;
 /* Exported types ------------------------------------------------------------*/
 #pragma pack(1)

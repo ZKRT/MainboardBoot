@@ -1,7 +1,9 @@
 #include "sys.h"
 #include "core_cm4.h"
 #include "stm32f4xx_pwr.h"
-volatile uint32_t TimingDelay = 0XFFFFFFFF;
+volatile uint32_t TimingDelay = 0;
+volatile uint32_t mobile_recv_time = 0;
+volatile uint32_t mobile_send_time = 0;
 
 void
 delay_nms(uint16_t time) {

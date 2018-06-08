@@ -12,6 +12,8 @@ extern "C" {
 #include <stdbool.h>
 
 extern volatile uint32_t TimingDelay;
+extern volatile uint32_t mobile_recv_time;
+extern volatile uint32_t mobile_send_time;
 
 void delay_nms(uint16_t time);
 #ifdef __cplusplus

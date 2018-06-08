@@ -61,23 +61,23 @@ void mobile_data_handle(void) {
 		printf("%x ", msg_handlest.data_recv_app[k]);
 	}
 	printf("\n");
-	
-	if(main_dji_rev->UAVID[3] != DEVICE_TYPE_SELF)
+
+	if (main_dji_rev->UAVID[3] != DEVICE_TYPE_SELF)
 		return;
-	
+
 	switch (main_dji_rev->command) {
 	case ZK_COMMAND_NORMAL:
 		break;
 	case ZK_COMMAND_SPECIFIED:
 		break;
 	case ZK_COMMAND_COMMON:
-		if(main_dji_rev->data[0] >= TN_MAX)
+		if (main_dji_rev->data[0] >= TN_MAX)
 			return;
 		respondflag = ptcol_fun[main_dji_rev->data[0]](main_dji_rev->data, msg_handlest.sendpacket_app.data, main_dji_rev->length, &msg_handlest.sendpacket_app.length);
 		break;
 	default: break;
 	}
-	
+
 	if (respondflag) {
 		memcpy(&msg_handlest.sendpacket_app, main_dji_rev, ZK_HEADER_LEN);
 		msg_handlest.sendpacket_app.cmd = UAV_TO_APP;
@@ -127,17 +127,13 @@ static char jump_boot_mode_comnf(void *sdata, void *rdata, u8 slen, u8* rlen) {
 	common_data_plst *common             = (common_data_plst*)sdata;
 	rcommon_data_plst *rcommon             = (rcommon_data_plst*)rdata;
 	common_jumpbootmode_plst *sother = (common_jumpbootmode_plst*)common->type_data;
-	
-	if(sother->mode == API_MODE)
-	{
-		if(iaphandle.api_enabled == API_VALID)
-		{
+
+	if (sother->mode == API_MODE) {
+		if (iaphandle.api_enabled == API_VALID) {
 			iaphandle.program_mode = API_MODE;
 			user_flash_buffer.program_mode = API_MODE; //write flash
 			userflash_write(USER_CONFIG_ADDRESS);
-		}
-		else
-		{
+		} else {
 			ret = TNS_FAIL;
 		}
 	}
@@ -152,7 +148,7 @@ static char get_boot_info_comnf(void *sdata, void *rdata, u8 slen, u8* rlen) {
 	common_data_plst *common             = (common_data_plst*)sdata;
 	rcommon_data_plst *rcommon             = (rcommon_data_plst*)rdata;
 	common_rgetbootinfo_plst *rother = (common_rgetbootinfo_plst*)rcommon->other_data;
-	
+
 	rother->apienable = iaphandle.api_enabled;
 	strcpy((char*)rother->version, DEV_SW_MB);
 	//respond packet
@@ -179,7 +175,7 @@ static char fw_updating_comnf(void *sdata, void *rdata, u8 slen, u8* rlen) {
 	u8 ret;
 	common_data_plst *common             = (common_data_plst*)sdata;
 	rcommon_data_plst *rcommon             = (rcommon_data_plst*)rdata;
-	common_fwupdating_plst *rother = (common_fwupdating_plst*)rcommon->other_data;	
+	common_fwupdating_plst *rother = (common_fwupdating_plst*)rcommon->other_data;
 	ret = iap_updating(rother->seq, rother->packet);
 	//respond packet
 	rcommon->type_num = common->type_num;
@@ -192,7 +188,7 @@ static char fw_update_ok_comnf(void *sdata, void *rdata, u8 slen, u8* rlen) {
 	u8 ret;
 	common_data_plst *common             = (common_data_plst*)sdata;
 	rcommon_data_plst *rcommon             = (rcommon_data_plst*)rdata;
-	common_fwupdateok_plst *rother = (common_fwupdateok_plst*)rcommon->other_data;	
+	common_fwupdateok_plst *rother = (common_fwupdateok_plst*)rcommon->other_data;
 	ret = iap_updated_ok(rother->last_seq);
 	//respond packet
 	rcommon->type_num = common->type_num;

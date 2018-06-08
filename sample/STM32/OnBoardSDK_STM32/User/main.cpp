@@ -8,6 +8,7 @@
 #include "djiCtrl.h"
 #include "iap.h"
 #include "flash_if.h"
+#include "led.h"
 
 /*-----------------------DJI_LIB VARIABLE-----------------------------*/
 using namespace DJI::OSDK;
@@ -20,13 +21,15 @@ Vehicle*       v       = &vehicle;
 
 int main() {
 	BSPinit();
-	printf("Mainborad Boot Start.\r\n");
-	iap_init();
+	printf("************************[Mboot]Start\r\n");
+	printf("************************[Mboot]\r\n");
 	FLASH_If_Init(); /* Unlock the Flash Program Erase controller */
+	iap_init();
 	if (dji_init() < 0)
 		return -1;
-	printf("Mainborad Boot Enter Loop.\r\n");
+	printf("************************[Mboot]Enter Loop.\r\n");
 	while (1) {
+		led_process();
 		dji_process();
 		iap_process();
 	}

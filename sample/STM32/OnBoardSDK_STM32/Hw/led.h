@@ -11,8 +11,9 @@ extern "C" {
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 void led_init(void);
+void led_process(void);
 void run_led(char state);
-void fcok_led(char state);
+void init_led(char state);
 #ifdef __cplusplus
 }
 #endif

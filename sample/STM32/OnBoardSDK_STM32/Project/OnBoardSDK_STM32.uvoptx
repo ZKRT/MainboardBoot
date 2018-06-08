@@ -152,7 +152,7 @@
           <Type>0</Type>
           <LineNumber>61</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134220464</Address>
+          <Address>134221026</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -162,6 +162,22 @@
           <Filename>E:\User\妗岄潰\浜у搧\妯″潡浠ｇ爜鐩稿叧\绠＄悊鏉跨増鏈?ZKRT_DJI\MainboardBoot\sample\STM32\OnBoardSDK_STM32\Zkrt\iap.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\Mboot\../Zkrt/iap.c\61</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>39</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134220938</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>E:\User\妗岄潰\浜у搧\妯″潡浠ｇ爜鐩稿叧\绠＄悊鏉跨増鏈?ZKRT_DJI\MainboardBoot\sample\STM32\OnBoardSDK_STM32\Zkrt\iap.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\Mboot\../Zkrt/iap.c\39</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -180,6 +196,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>myTerminal</ItemText>
         </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>flash_addr</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>
@@ -189,6 +210,14 @@
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>
+      <MemoryWindow2>
+        <Mm>
+          <WinNumber>2</WinNumber>
+          <SubType>0</SubType>
+          <ItemText>0x8060000</ItemText>
+          <AccSizeX>0</AccSizeX>
+        </Mm>
+      </MemoryWindow2>
       <Tracepoint>
         <THDelay>0</THDelay>
       </Tracepoint>

@@ -15,7 +15,6 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "led.h"
-#include "stm32f4xx.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -66,7 +65,12 @@ void led_init(void) {
   * @retval None
   */
 void led_process(void) {
-
+	if ((TimingDelay - mobile_recv_time) > 50) {
+		GPIO_SetBits(GPIOC, GPIO_Pin_12);
+	}
+	if ((TimingDelay - mobile_send_time) > 50) {
+		GPIO_SetBits(GPIOG, GPIO_Pin_8);
+	}
 }
 void run_led(char state) {
 	if (state)
@@ -74,7 +78,7 @@ void run_led(char state) {
 	else
 		GPIO_ResetBits(GPIOF, GPIO_Pin_11);
 }
-void fcok_led(char state) {
+void init_led(char state) {
 	if (state)
 		GPIO_SetBits(GPIOB, GPIO_Pin_14);
 	else
